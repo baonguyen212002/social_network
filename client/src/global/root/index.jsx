@@ -17,9 +17,11 @@ function Home() {
     [navigate]
   );
   return (
-    <div>
-      <div>
+    <div className="grid grid-cols-3">
+      <div className="col-span-1">
         <SideBar tabActive={tabActive} onClickTab={setTabActive} />
+        </div>
+        <div className="col-span-2 sm:col-span-3">
         <Content>
           <Outlet />
         </Content>

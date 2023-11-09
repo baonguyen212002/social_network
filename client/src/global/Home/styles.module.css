@@ -11,7 +11,7 @@
     padding-left: 64px;
   }
   
-  @media screen and (max-width: 999px) {
+  @media screen and (max-width: 1160px) {
     .container_feed {
       margin-right: 0;
     }
