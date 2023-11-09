@@ -7,17 +7,11 @@ import { router } from './router';
 
 function App() {
 
-  return <div>
+  return (
     <div>
       <RouterProvider router={router} />
     </div>
-  </div>;
-
-  // return (
-  //   <div>
-  //     <RouterProvider router={router} />
-  //   </div>
-  // );
+  );
 }
 
 export default App;
