@@ -3,7 +3,7 @@ import {
     createRoutesFromElements,
     Route,
   } from "react-router-dom";
-//   import CreatesPage from "../pages/creates";
+  import CreatesPage from "../pages/create";
   import ExplorePage from "../pages/explore";
   import HomePage from "../global/Home";
   import MessagesPage from "../pages/messages";
@@ -21,7 +21,7 @@ import {
         {/* <Route element={<ProfilePage />} path="profile" /> */}
         <Route element={<MessagesPage />} path="messages" />
         <Route element={<NotificationsPage />} path="notifications" />
-        {/* <Route element={<CreatesPage />} path="creates" /> */}
+        <Route element={<CreatesPage />} path="creates" />
       </Route>
     )
   );
