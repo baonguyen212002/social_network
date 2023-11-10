@@ -1,43 +1,46 @@
 import mongoose from "mongoose";
 
-const schema = new mongoose.Schema({
+const schema = new mongoose.Schema(
+  {
     id: {
-        type: Number,
-        required: true,
-        primaryKey: true,
-        unique: true
+      type: Number,
+      required: true,
+      primaryKey: true,
+      unique: true,
     },
     user_id: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true,
     },
     author: {
-        type: String,
-        require: true,
-        default: 'Anomyous'
+      type: String,
+      require: true,
+      default: "Anomyous",
     },
     status: {
-        type: String,
-        required: true,
-        default: 'online'
+      type: String,
+      required: true,
+      default: "online",
     },
     title: {
-        type: String,
-        required: true,
-        maxlength: 150
+      type: String,
+      required: true,
+      maxlength: 150,
     },
     attachment: String,
     body: {
-        type: String,
-        required: true,
-        maxlength: 500
+      type: String,
+      required: true,
+      maxlength: 500,
     },
+    image: { type: String, required: true },
     likeCount: {
-        type: Number,
-        default: 0
-    }
+      type: Number,
+      default: 0,
+    },
     //Created_at , Updated_at
-}, { timestamps: true} 
+  },
+  { timestamps: true }
 );
 
-export const PostModel = mongoose.model('Post', schema);
+export const PostModel = mongoose.model("Post", schema);

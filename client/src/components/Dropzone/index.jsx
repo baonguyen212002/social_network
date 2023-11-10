@@ -84,7 +84,7 @@ const Dropzone = () => {
         <div className="grid grid-rows-3">
           <div className="row-span-1">
             <div className="flex justify-between border-b-[1px]">
-              <div  onClick={openDiscardDialog} >
+              <div  onClick={openDiscardDialog} style={{cursor:"pointer"}}>
                 <IconPrev/>
               </div>
               <div>
