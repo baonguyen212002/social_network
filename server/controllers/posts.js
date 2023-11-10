@@ -4,9 +4,9 @@ export const getPosts = async (req, res) => {
     try {
         // test Data
         // const post = new PostModel({
-        //     id: 12,
-        //     user_id: 11,
-        //     title: 'demo DB',
+        //     id: 3,
+        //     user_id: 3,
+        //     title: 'Post 3',
         //     body: 'test content'
         // });
         // post.save();
@@ -25,10 +25,10 @@ export const createPost = async (req, res) => {
         const NewPost = req.body;
 
 
-        const post = new PostModel(NewPost);
-        await post.save();
+        const posts = new PostModel(NewPost);
+        await posts.save();
 
-        res.status(200).json(post);
+        res.status(200).json(posts);
 
     } catch (error) {
         res.status(500).json({error: err});
@@ -39,13 +39,13 @@ export const updatePost = async (req, res) => {
     try {
         const updatePost = req.body;
 
-        const post = await PostModel.findOneAndUpdate(
+        const posts = await PostModel.findOneAndUpdate(
             {user_id: updatePost.user_id}, 
             updatePost, 
             {new: true}
         );
 
-        res.status(200).json(post);
+        res.status(200).json(posts);
 
     } catch (error) {
         res.status(500).json({error: err});
