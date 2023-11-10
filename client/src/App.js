@@ -13,11 +13,6 @@ function App() {
     </div>
   </div>;
 
-  // return (
-  //   <div>
-  //     <RouterProvider router={router} />
-  //   </div>
-  // );
 }
 
 export default App;
