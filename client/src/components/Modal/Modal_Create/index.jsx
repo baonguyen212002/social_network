@@ -26,6 +26,7 @@ function ModalCreate({ open, onClose }) {
         <Box sx={style}>
           <Dropzone />
         </Box>
+
       </Modal>
     </div>
   );
