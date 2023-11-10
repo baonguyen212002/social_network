@@ -10,27 +10,21 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 800,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  borderRadius: "10px",
   boxShadow: 24,
   p: 4,
 };
-function ModalCreate() {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  
-
+function ModalCreate({ open, onClose }) {
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={onClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Dropzone/>
+          <Dropzone />
         </Box>
       </Modal>
     </div>

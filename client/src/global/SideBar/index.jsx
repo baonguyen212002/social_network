@@ -1,4 +1,6 @@
 // import { currentUser } from "../../common/data/current_user";
+import { useState } from "react";
+import ModalCreate from "../../components/Modal/Modal_Create";
 import {
   IconCreate,
   IconCreateActive,
@@ -21,11 +23,17 @@ import { InstagramLogo } from "../../components/images";
 import NavItem from "../../components/nav_item";
 import styles from "./styles.module.css";
 
-export default function SideBar({
-  tabActive,
-  onClickTab,
-}){
-//   const userAvatar = currentUser.avatar;
+export default function SideBar({ tabActive, onClickTab }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+  //   const userAvatar = currentUser.avatar;
 
   return (
     <div className={`${styles.sidebar}`}>
@@ -84,8 +92,9 @@ export default function SideBar({
           activeIcon={<IconCreateActive />}
           isActive={tabActive === "creates"}
           title={"Creates"}
-          onClick={() => onClickTab("creates")}
+          onClick={handleOpenModal}
         />
+        <ModalCreate open={isModalOpen} onClose={handleCloseModal} />
         {/* <NavItem
           icon={<MenuAvatar url={userAvatar} isActive={false} />}
           activeIcon={<MenuAvatar url={userAvatar} isActive={true} />}
