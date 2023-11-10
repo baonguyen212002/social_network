@@ -1,6 +1,5 @@
 import React from "react";
-import useStyles from "./style.js";
-import { Link } from 'react-router-dom';
+import styles from './style.modal.css';
 import { Avatar, Card, CardMedia, Grid, IconButton, Button } from "@mui/material";
 import SettingsIcon from '@mui/icons-material/Settings';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -12,11 +11,9 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 //Sử dụng modal để làm nổi bật comment
 //https://mui.com/material-ui/react-modal/
 export default function Comment() {
-    const classes = useStyles();
-
     const statusPoster = (
         <div>
-            <div className={classes.Poster}>
+            <div className={`${styles.Poster}`}>
                 <div className="row">
                     <div className="col-md-3">
                         <Avatar
@@ -24,63 +21,63 @@ export default function Comment() {
                             alt="Messi"
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg/220px-Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg"
 
-                            className={classes.avatar_poster}
+                            className={`${styles.avatar_poster}`}
                         />
                     </div>
 
                     <div className="col-md-6">
-                        <p className={classes.namePoster}>Messi</p>
+                        <p className={`${styles.namePoster}`}>Messi</p>
                     </div>
 
                     <div className="col-md-2">
-                        <p className={classes.statusPoster}>Online</p>
+                        <p className={`${styles.statusPoster}`}>Online</p>
                     </div>
 
                     <div className="col-md-1">
-                        <div className={classes.btnSettingPoster}>
+                        <div className={`${styles.btnSettingPoster}`}>
                             <SettingsIcon></SettingsIcon>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className={classes.borderBottom}></div>
+            <div className={`${styles.borderBottom}`}></div>
         </div>
     );
 
     const statusUser = (
-        <div className={classes.userComment}>
-            <div className={classes.User}>
-                <div className={classes.userInfo}>
-                    <div className={classes.avatarUser}>
+        <div className={`${styles.userComment}`}>
+            <div className={`${styles.User}`}>
+                <div className={`${styles.userInfo}`}>
+                    <div className={`${styles.avatarUser}`}>
                         <Avatar
                             alt="User1"
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJCffxOKRLn21jLPSYrtR5knqhMJ7jWsq9EQ&usqp=CAU" />
                     </div>
 
-                    <div className={classes.nameUser}>
+                    <div className={`${styles.nameUser}`}>
                         <p >User 1</p>
                     </div>
                 </div>
 
-                <div className={classes.commentBody}>
-                    <div className={classes.commentUser} >
+                <div className={`${styles.commentBody}`}>
+                    <div className={`${styles.commentUser}`} >
                         <p>Comment ở đây nè</p>
                     </div>
 
-                    <div className={classes.likeComment} >
+                    <div className={`${styles.likeComment}`} >
                         <FavoriteBorderIcon />
                     </div>
 
-                    <div className={classes.statusUser}>
+                    <div className={`${styles.statusUser}`}>
                         <p>1 giờ trước</p>
                     </div>
 
-                    <div className={classes.likeCount}>
+                    <div className={`${styles.likeCount}`}>
                         <p>1k lượt thích</p>
                     </div>
 
-                    <div className={classes.reply}>
-                        <a className={classes.btnReply} href="#">Trả lời</a>
+                    <div className={`${styles.reply}`}>
+                        <a className={`${styles.btnReply}`} href="#">Trả lời</a>
                     </div>
                 </div>
             </div>
@@ -88,71 +85,66 @@ export default function Comment() {
     );
 
     const inputComment = (
-        <div className={classes.inputComment}>
-            <div className={classes.borderTop}></div>
+        <div className={`${styles.inputComment}`}>
+            <div className={`${styles.borderTop}`}></div>
 
-            <div className={classes.input_btnLike}>
-                <FavoriteBorderIcon sx={{ width: 40, height: 40 }}></FavoriteBorderIcon>
+            <div className={`${styles.input_btnLike}`}>
+                <FavoriteBorderIcon sx={{ width: 40, height: 40 }`}}`}></FavoriteBorderIcon>
             </div>
 
-            <div className={classes.input_btnComment}>
-                <MapsUgcIcon sx={{ width: 40, height: 40 }}></MapsUgcIcon>
+            <div className={`${styles.input_btnComment}`}>
+                <MapsUgcIcon sx={{ width: 40, height: 40 }`}}`}></MapsUgcIcon>
             </div>
 
-            <div className={classes.input_btnShare}>
-                <SendIcon sx={{ width: 40, height: 40 }}></SendIcon>
+            <div className={`${styles.input_btnShare}`}>
+                <SendIcon sx={{ width: 40, height: 40 }`}}`}></SendIcon>
             </div>
 
-            <div className={classes.input_btnSave}>
-                <BookmarkBorderIcon sx={{ width: 40, height: 40 }}></BookmarkBorderIcon>
+            <div className={`${styles.input_btnSave}`}>
+                <BookmarkBorderIcon sx={{ width: 40, height: 40 }`}}`}></BookmarkBorderIcon>
             </div>
 
-            <div className={classes.input_statLikeCount}>
-                <p className={classes.p_input}>2k lượt thích</p>
+            <div className={`${styles.input_statLikeCount}`}>
+                <p className={`${styles.p_input}`}>2k lượt thích</p>
             </div>
 
-            <div className={classes.input_status}>
-                <p className={classes.p_input}>2 tiếng trước</p>
+            <div className={`${styles.input_status}`}>
+                <p className={`${styles.p_input}`}>2 tiếng trước</p>
             </div>
 
-            <div className={classes.input_avataComment}>
+            <div className={`${styles.input_avataComment}`}>
                 <Avatar
                     sx={{ width: 50, height: 50, border: '2px solid black' }}
                     alt="User1"
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJCffxOKRLn21jLPSYrtR5knqhMJ7jWsq9EQ&usqp=CAU" />
             </div>
 
-            <div className={classes.input_commentContent}>
-                <input className={classes.input_Content} type="text" ></input>
+            <div className={`${styles.input_commentContent}`}>
+                <input className={`${styles.input_Content}`} type="text" ></input>
             </div>
 
-            <div className={classes.input_Submit}>
-                <a className={classes.a_Submit} href="#">Đăng</a>
+            <div className={`${styles.input_Submit}`}>
+                <a className={`${styles.a_Submit}`} href="#">Đăng</a>
             </div>
         </div>
     );
 
     const contentRight = (
-        <div className={classes.contentRight}>
-            <div className={classes.posterSticky}>
+        <div className={`${styles.contentRight}`}>
+            <div className={`${styles.posterSticky}`}>
                 {statusPoster}
             </div>
 
-            <div className={classes.content}>
+            <div className={`${styles.content}`}>
                 {statusUser}{statusUser}
                 {statusUser}{statusUser}
                 {statusUser}{statusUser}
                 {statusUser}{statusUser}
                 {statusUser}{statusUser}
                 {statusUser}{statusUser}
-                {statusUser}{statusUser}
-                {statusUser}{statusUser}
-                {statusUser}{statusUser}
-                {statusUser}{statusUser}
-
             </div>
 
-            <div className={classes.inputSticky}>
+            <div className={`${styles.inputSticky}`}>
                 {inputComment}
             </div>
         </div>
@@ -163,12 +155,12 @@ export default function Comment() {
             image={'https://media.cnn.com/api/v1/images/stellar/prod/230908103500-01-lionel-messi-argentina-ecuador.jpg?c=16x9&q=h_720,w_1280,c_fill'}
             title="Content-comment-img"
 
-            className={classes.img_post}
+            className={`${styles.img_post}`}
         />
     );
     return (
         <div>
-            <Card variant="outlined" spacing={2} className={classes.content_post}>
+            <Card variant="outlined" spacing={2} className={`${styles.content_post}`}>
                 <Grid container spacing={0}>
 
                     <Grid item md={7}>

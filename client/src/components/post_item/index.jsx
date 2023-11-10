@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { currentUser } from "../../common/data/current_user";
 // import { Post } from "../../common/models";
+import ModalComment from "../Modal/Modal_Comment";
 import { StringUtils } from "../../utils";
 import {
   IconComment,
@@ -14,6 +16,16 @@ import UserAvatarStory from "../user_avatar_story";
 
 export default function PostItem({ post }) {
   const userNameOfAuthor = StringUtils.displayUserName(post.user.userName);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="bg-white mt-4 rounded-lg border-[1px]">
@@ -40,7 +52,11 @@ export default function PostItem({ post }) {
       {/* List Icons */}
       <div className="flex flex-row m-1">
         <IconApp icon={<IconHeart />} onClick={() => console.log("")} />
-        <IconApp icon={<IconComment />} onClick={() => console.log("")} />
+
+      
+        <IconApp icon={<IconComment />} onClick= {(handleOpenModal)} />
+      
+      <ModalComment open={isModalOpen} onClose={handleCloseModal}/>
         <IconApp icon={<IconShare />} onClick={() => console.log("")} />
         <div className="grow ">
           <IconApp
