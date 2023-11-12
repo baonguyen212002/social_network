@@ -9,6 +9,7 @@ import {
   TextField,
 } from "@mui/material";
 import { IconPrev } from "../icons/ic_prev";
+import axios from "axios";
 
 const Dropzone = () => {
   const [selectedImages, setSelectedImages] = useState([]);
@@ -17,6 +18,8 @@ const Dropzone = () => {
   const [isCaptionVisible, setIsCaptionVisible] = useState(false);
   const [isPostButton, setIsPostButton] = useState(false);
   const [caption, setCaption] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onDrop = useCallback((acceptedFiles) => {
     const images = acceptedFiles.filter((file) =>
@@ -56,9 +59,44 @@ const Dropzone = () => {
   };
 
   const handleNext = () => {
-    // Add logic for "Next" button
     setIsCaptionVisible(true);
     setIsPostButton(true);
+  };
+
+  const handlePost = async () => {
+    try {
+      setLoading(true);
+  
+      if (!selectedImages.length && !selectedVideos.length && !caption) {
+        console.error("Vui lòng chọn ảnh hoặc video và nhập chú thích.");
+        return;
+      }
+  
+      const validImages = selectedImages.filter((image) => image.preview);
+      const validVideos = selectedVideos.filter((video) => video.preview);
+  
+      const response = await axios.post("http://localhost:5000/api/create-post", {
+        images: validImages.map((image) => image.preview),
+        videos: validVideos.map((video) => video.preview),
+        caption,
+      });
+  
+      console.log("Đăng bài thành công:", response.data);
+  
+      setIsModalOpen(true);
+    } catch (error) {
+      console.error("Lỗi khi đăng bài:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+
+    // Thêm bất kỳ hành động nào bạn muốn thực hiện khi modal đóng
+    // Ví dụ: chuyển hướng trang
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -80,19 +118,23 @@ const Dropzone = () => {
 
   return (
     <div className="grid justify-center">
-      {(selectedImages.length > 0 || selectedVideos.length > 0) ? (
+      {selectedImages.length > 0 || selectedVideos.length > 0 ? (
         <div className="grid grid-rows-3">
           <div className="row-span-1">
             <div className="flex justify-between border-b-[1px]">
-              <div  onClick={openDiscardDialog} style={{cursor:"pointer"}}>
-                <IconPrev/>
+              <div onClick={openDiscardDialog} style={{ cursor: "pointer" }}>
+                <IconPrev />
               </div>
               <div>
                 <Typography>Crop</Typography>
               </div>
               <div>
-                <button type="button" onClick={handleNext}>
-                  {isPostButton ? "Post" : "Next"}
+                <button
+                  type="button"
+                  onClick={isPostButton ? handlePost : handleNext}
+                  disabled={loading}
+                >
+                  {loading ? "Đang đăng..." : isPostButton ? "Post" : "Next"}
                 </button>
               </div>
             </div>
@@ -142,7 +184,16 @@ const Dropzone = () => {
         </DialogActions>
       </Dialog>
 
-      {/* Caption */}
+      {/* Modal thông báo thành công */}
+      <Dialog open={isModalOpen} onClose={handleCloseModal}>
+        <DialogContent>
+          <Typography>Bài viết đã được đăng thành công!</Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseModal}>Đóng</Button>
+        </DialogActions>
+      </Dialog>
+
       <div
         style={{
           display: isCaptionVisible ? "block" : "none",
