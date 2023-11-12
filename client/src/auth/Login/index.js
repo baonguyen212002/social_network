@@ -1,22 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import useStyles from './style';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useCallback } from 'react';
+import Styles from '../Login/style.css';
 import {Button, CardMedia, Checkbox, FormControlLabel, Grid,} from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../redux/actions/auth';
-import { loginState$ } from '../../redux/selectors';
 
 function Login() {
-    const classes = useStyles();
-    const [data, setData] = useState({email: '', password: ''})
-    const [err, setErr] = useState()
-    const dispatch =  useDispatch()
-    const selector = useSelector(loginState$);
-    const navigator = useNavigate();
-    const handleLogin  =  useCallback(()=>{
-        dispatch(login.loginRequest(data))
-        
-    },[data,dispatch])
     const handleShowPassword = useCallback(()=>{
         document.querySelector('#password').type  = 'text'
         document.querySelector('#eyeOpen').style.display  = 'block'
@@ -29,34 +15,23 @@ function Login() {
         document.querySelector('#eyeClose').style.display  = 'block'
 
     },[])
-    useEffect(()=>{
-        if (selector.auth.token.validation_error) {
-            setErr(selector.auth.token.validation_error)
-        } else if(selector.auth.token.token) {
-            localStorage.setItem('auth_token', selector.auth.token.token);
-            navigator('/')
-            
-        }else{
-            setErr('Tài khoản hoặc mật khẩu không đúng.')
-        }
-        console.log(err);
-    },[ selector])
     return (
-        <div className={classes.container}>
+        <div className={`${Styles.container}`}>
             <Grid container spacing={2} columns={16}>
                 <Grid item xs={6} md={4}>
-                    <div className={classes.logo}>
+                    <div className={`${Styles.logo}`}>
                         <CardMedia
                             sx={{ height: 300, width: 300 }}
                             image="https://i.imgur.com/xbuBfWp.png"
                             title="green iguana"
                         />
                     </div>
+                    
                 </Grid>
                 <Grid item xs={6} md={8}>
-                    <div className={classes.formlg}>
+                    <div className={`${Styles.formlg}`}>
                         {/* Logo */}
-                        <div className={classes.socical_network}>
+                        <div className={`${Styles.socical_network}`}>
                             <svg aria-label="Instagram" className="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)"
                                 height="50" role="img" viewBox="32 4 113 32" width="130">
                             <path clipRule="evenodd"
@@ -66,40 +41,40 @@ function Login() {
                         </div>
                         {/* /Logo */}
                         {/* Text Field */}
-                        <div className={classes.listtextfieldlg}>
-                            {/* <TextField className={classes.textfieldlg} label="Email" variant="filled" size="small"/> */}
-                            <input className={classes.textfieldlg} type="email" onChange={(e)=>setData({...data, email: e.target.value})} id="email" placeholder='Email'/>
-                            <div>{err ? err.email :''}</div>
+                        <div className={`${Styles.listtextfieldlg}`}>
+                            {/* <TextField className={`${Styles.textfieldlg} label="Email" variant="filled" size="small"/> */}
+                            <input className={`${Styles.textfieldlg}`} type="email" id="email" placeholder='Email'/>
+                            
                         </div>
-                        <div className={classes.listtextfieldpass}>
-                            <div className={classes.eyeposition}>
-                                <span className={classes.eyeclose} id='eyeClose' onClick={handleShowPassword}><i class="fa-regular fa-eye-slash fa-flip-horizontal"></i></span>
-                                <span className={classes.eyeopen} id='eyeOpen' onClick={handleClosePassword}><i class="fa-regular fa-eye fa-flip-horizontal"></i></span>
+                        <div className={`${Styles.listtextfieldpass}`}>
+                            <div className={`${Styles.eyeposition}`}>
+                                <span className={`${Styles.eyeclose}`} id='eyeClose' onClick={handleShowPassword}><i class="fa-regular fa-eye-slash fa-flip-horizontal"></i></span>
+                                <span className={`${Styles.eyeopen}`} id='eyeOpen' onClick={handleClosePassword}><i class="fa-regular fa-eye fa-flip-horizontal"></i></span>
                             </div>
-                            <input className={classes.textfieldlg} onChange={(e) => setData({ ...data, password: e.target.value })} type="password" id="password" placeholder='Password'/>
-                            <div>{err ? err.password :''}</div>
+                            <input className={`${Styles.textfieldlg}`}  type="password" id="password" placeholder='Password'/>
+                            
                         </div> 
                         {/* /Text Field */}
                         {/* Checkbox */}
-                        <div className={classes.formcheckbox}>
-                            <FormControlLabel control={<Checkbox className={classes.checkboxlg} default/>} label="Ghi nhớ đăng nhập" />
+                        <div className={`${Styles.formcheckbox}`}>
+                            <FormControlLabel control={<Checkbox className={`${Styles.checkboxlg}`} default/>} label="Ghi nhớ đăng nhập" />
                         </div>
                         {/* /Checkbox */}
                         {/* Submit */}
-                        <div className={classes.listtextfieldpass}>
+                        <div className={`${Styles.listtextfieldpass}`}>
                            
-                                <Button onClick={handleLogin} className={classes.buttonlogin} variant="contained">
+                                <Button className={`${Styles.buttonlogin}`} variant="contained">
                                     Trang chủ
                                 </Button>
                         </div>
-                        <div className={classes.listtextfieldpass}>
-                            <Link className={classes.forgotpass} to={'/forgotPass'}>Quên mật khẩu</Link>
+                        <div className={`${Styles.listtextfieldpass}`}>
+                            <Button className={`${Styles.forgotpass}`} >Quên mật khẩu</Button>
                         </div>
                        
                         {/* /Submit */}
                     </div>
-                    <div className={classes.register}>
-                        Bạn chưa có tài khoản? <Link to={'/register'}>&nbsp;Đăng ký</Link>
+                    <div className={`${Styles.register}`}>
+                        Bạn chưa có tài khoản? <Button >&nbsp;Đăng ký</Button>
                     </div>     
                 </Grid>
             </Grid>

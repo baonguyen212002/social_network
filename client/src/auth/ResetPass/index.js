@@ -42,7 +42,7 @@ function ResetPass() {
                         
                         {/* Submit */}
                         <div className={classes.resetpass}>
-                            <Link to={'/login'}>
+                            <Link >
                                 <Button className={classes.buttonsub} variant="contained" disableElevation>
                                     Xác nhận
                                 </Button>
@@ -52,7 +52,7 @@ function ResetPass() {
                         <div className={classes.listtextfoot}>
                             <p className={classes.linefoot}></p>
                             <p className={classes.backtologin}>
-                                <Link className={classes.forgotpass} to={'/login'}>Quay lại đăng nhập</Link>
+                                <Link className={classes.forgotpass} >Quay lại đăng nhập</Link>
                             </p>
                         </div>
                         {/* /Submit */}

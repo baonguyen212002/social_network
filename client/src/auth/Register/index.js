@@ -1,16 +1,15 @@
 import React from 'react';
-import useStyles from './style';
-import { Link } from 'react-router-dom';
+import Styles from '../Register/style.css';
 import { Button } from '@mui/material';
 
 
 function Register() {
-    const classes = useStyles();
     return (
-        <div className={classes.container}>
-            <div className={classes.formlg}>
+        // `${Styles.buttonlogin}`
+        <div className={`${Styles.container}`}>
+            <div className={`${Styles.formlg}`}>
                         {/* Logo */}
-                        <div className={classes.socical_network}>
+                        <div className={`${Styles.socical_network}`}>
                             <svg aria-label="Instagram" className="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)"
                                 height="50" role="img" viewBox="32 4 113 32" width="130">
                             <path clipRule="evenodd"
@@ -19,38 +18,35 @@ function Register() {
                             </svg>
                         </div>
                         {/* /Logo */}
-                        <div className={classes.detail}>
-                            <p className={classes.title}>Đăng ký để xem thông tin về bạn bè của bạn.</p>
+                        <div className={`${Styles.detail}`}>
+                            <p className={`${Styles.title}`}>Đăng ký để xem thông tin về bạn bè của bạn.</p>
                         </div>
                         {/* Text Field */}
-                        <div className={classes.listtextfieldlg}>
-                            {/* <TextField className={classes.textfieldlg} label="Email" variant="filled" size="small"/> */}
-                            <input className={classes.textfieldlg} type="email" id="Email" placeholder='Email'></input>
+                        <div className={`${Styles.listtextfieldlg}`}>
+                            {/* <TextField className={`${Styles.textfieldlg}`} label="Email" variant="filled" size="small"/> */}
+                            <input className={`${Styles.textfieldlg}`} type="email" id="Email" placeholder='Email'></input>
                         </div>
-                        <div className={classes.listtextfieldlg}>
-                            {/* <TextField className={classes.textfieldlg} label="Email" variant="filled" size="small"/> */}
-                            <input className={classes.textfieldlg} type="username" id="UserName" placeholder='Tên tài khoản'></input>
+                        <div className={`${Styles.listtextfieldlg}`}>
+                            {/* <TextField className={`${Styles.textfieldlg}`} label="Email" variant="filled" size="small"/> */}
+                            <input className={`${Styles.textfieldlg}`} type="username" id="UserName" placeholder='Tên tài khoản'></input>
                         </div>
-                        <div className={classes.listtextfieldpass}>
-                            <div className={classes.eyeposition}>
-                                <span className={classes.eyeclose}><i class="fa-regular fa-eye-slash fa-flip-horizontal"></i></span>
-                                <span className={classes.eyeopen}><i class="fa-regular fa-eye fa-flip-horizontal"></i></span>
+                        <div className={`${Styles.listtextfieldpass}`}>
+                            <div className={`${Styles.eyeposition}`}>
+                                <span className={`${Styles.eyeclose}`}><i class="fa-regular fa-eye-slash fa-flip-horizontal"></i></span>
+                                <span className={`${Styles.eyeopen}`}><i class="fa-regular fa-eye fa-flip-horizontal"></i></span>
                             </div>
-                            <input className={classes.textfieldlg} type="password" id="Password" placeholder='Mật khẩu'></input>
+                            <input className={`${Styles.textfieldlg}`} type="password" id="Password" placeholder='Mật khẩu'></input>
                         </div> 
                         {/* /Text Field */}
                         
                         {/* Submit */}
-                        <div className={classes.listtextfieldpass}>
-                            <Link to={'/login'}>
-                                <br></br>
-                                <Button className={classes.buttonregis} variant="contained">
+                        <div className={`${Styles.listtextfieldpass}`}>
+                                <Button className={`${Styles.buttonregis}`} variant="contained">
                                     Đăng ký
                                 </Button>
-                            </Link>
                         </div>
-                        <div className={classes.listtextfieldpass}>
-                            Bạn đã có tài khoản? <Link to={'/login'}>&nbsp;Đăng nhập</Link>
+                        <div className={`${Styles.listtextfieldpass}`}>
+                            Bạn đã có tài khoản? <Button >&nbsp;Đăng nhập</Button>
                         </div>
                         {/* /Submit */}
                     </div>

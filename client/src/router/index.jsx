@@ -11,6 +11,9 @@ import {
   import ProfilePage from "../pages/Profile";
   import RootPage from "../global/root";
   import SearchPage from "../pages/search";
+  import Login from "../auth/Login";
+  import Register from "../auth/Register";
+  import ForgotPass from "../auth/ForgotPass";
   
   export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -22,6 +25,9 @@ import {
         <Route element={<MessagesPage />} path="messages" />
         <Route element={<NotificationsPage />} path="notifications" />
         <Route element={<CreatesPage />} path="creates" />
+        <Route element={<Login />} path="login" />
+        <Route element={<Register />} path="register" />
+        <Route element={<ForgotPass />} path="forgotpass" />
       </Route>
     )
   );
