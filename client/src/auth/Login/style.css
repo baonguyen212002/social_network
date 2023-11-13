@@ -1,6 +1,7 @@
-  .container {
-    margin-left: 400px;
-    margin-top: 150;
+  .loginform {
+    opacity: 0;
+    /* margin-left: 400px;
+    margin-top: 150; */
   }
 
   .logo {

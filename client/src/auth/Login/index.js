@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import Styles from '../Login/style.css';
-import {Button, CardMedia, Checkbox, FormControlLabel, Grid,} from '@mui/material';
+import { Link } from 'react-router-dom';
+import {Button, CardMedia, Checkbox, FormControlLabel, Grid} from '@mui/material';
 
 function Login() {
     const handleShowPassword = useCallback(()=>{
@@ -16,7 +17,7 @@ function Login() {
 
     },[])
     return (
-        <div className={`${Styles.container}`}>
+        <div className={Styles.loginform}>
             <Grid container spacing={2} columns={16}>
                 <Grid item xs={6} md={4}>
                     <div className={`${Styles.logo}`}>
@@ -48,8 +49,8 @@ function Login() {
                         </div>
                         <div className={`${Styles.listtextfieldpass}`}>
                             <div className={`${Styles.eyeposition}`}>
-                                <span className={`${Styles.eyeclose}`} id='eyeClose' onClick={handleShowPassword}><i class="fa-regular fa-eye-slash fa-flip-horizontal"></i></span>
-                                <span className={`${Styles.eyeopen}`} id='eyeOpen' onClick={handleClosePassword}><i class="fa-regular fa-eye fa-flip-horizontal"></i></span>
+                                <span className={`${Styles.eyeclose}`} id='eyeClose' onClick={handleShowPassword}><i className="fa-regular fa-eye-slash fa-flip-horizontal"></i></span>
+                                <span className={`${Styles.eyeopen}`} id='eyeOpen' onClick={handleClosePassword}><i className="fa-regular fa-eye fa-flip-horizontal"></i></span>
                             </div>
                             <input className={`${Styles.textfieldlg}`}  type="password" id="password" placeholder='Password'/>
                             
@@ -63,18 +64,22 @@ function Login() {
                         {/* Submit */}
                         <div className={`${Styles.listtextfieldpass}`}>
                            
-                                <Button className={`${Styles.buttonlogin}`} variant="contained">
-                                    Trang chủ
+                                <Button className={`${Styles.buttonlogin}`} variant="contained" type='submit'>
+                                    Đăng nhập
                                 </Button>
                         </div>
                         <div className={`${Styles.listtextfieldpass}`}>
+                        <Link to='/forgotpass'>
                             <Button className={`${Styles.forgotpass}`} >Quên mật khẩu</Button>
+                            </Link>
                         </div>
                        
                         {/* /Submit */}
                     </div>
                     <div className={`${Styles.register}`}>
-                        Bạn chưa có tài khoản? <Button >&nbsp;Đăng ký</Button>
+                        <Link to='/register'>
+                            Bạn chưa có tài khoản? <Button >&nbsp;Đăng ký</Button>
+                        </Link>
                     </div>     
                 </Grid>
             </Grid>

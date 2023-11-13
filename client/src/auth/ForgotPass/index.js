@@ -1,7 +1,7 @@
 import React from 'react';
 import Styles from '../ForgotPass/style.css';
 import { Button, CardMedia } from '@mui/material';
-
+import { Link } from 'react-router-dom';
 
 function ForgotPass() {
     return (
@@ -49,11 +49,15 @@ function ForgotPass() {
                             <p className={`${Styles.lineright}`}></p>
                         </div>
                         <div className={`${Styles.listtextfoot}`}>
+                        <Link to='/register'>
                             <Button className={`${Styles.forgotpass}`} >Tạo tài khoản mới</Button>
+                            </Link>
                         </div>
                         <div className={`${Styles.listtextfoot}`}>
                             <p className={`${Styles.linefoot}`}></p>
+                            <Link to='/'>
                             <Button className={`${Styles.forgotpass}`} >Quay lại đăng nhập</Button>
+                            </Link>
                         </div>
                         {/* /Submit */}
                     </div>

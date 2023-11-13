@@ -1,14 +1,14 @@
 import React from 'react';
-import useStyles from './style';
-import { Button, CardMedia } from '@mui/material';
+import Styles from './style.css';
+import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 function ResetPass() {
-    const classes = useStyles();
     return (
-        <div className={classes.container}>
+        // `${Styles.container}`
+        <div className={`${Styles.container}`}>
             {/* Logo */}
-            <div className={classes.socical_network}>
+            <div className={`${Styles.socical_network}`}>
                             <svg aria-label="Instagram" className="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)"
                                 height="50" role="img" viewBox="32 4 113 32" width="130">
                             <path clipRule="evenodd"
@@ -17,42 +17,40 @@ function ResetPass() {
                             </svg>
                         </div>
             {/* /Logo */}
-            <div className={classes.formlg}>
+            <div className={`${Styles.formlg}`}>
                     
-                        <div className={classes.detail}>
-                            <p className={classes.ques}>Đặt lại mật khẩu</p>
+                        <div className={`${Styles.detail}`}>
+                            <p className={`${Styles.ques}`}>Đặt lại mật khẩu</p>
                             Vui lòng tạo mật khẩu mới để đăng nhập
                         </div>
                         {/* Text Field */}
-                        <div className={classes.listtextfieldpass}>
-                            <div className={classes.eyeposition}>
-                                <span className={classes.eyeclose}><i class="fa-regular fa-eye-slash fa-flip-horizontal"></i></span>
-                                <span className={classes.eyeopen}><i class="fa-regular fa-eye fa-flip-horizontal"></i></span>
+                        <div className={`${Styles.listtextfieldpass}`}>
+                            <div className={`${Styles.eyeposition}`}>
+                                <span className={`${Styles.eyeclose}`}><i className="fa-regular fa-eye-slash fa-flip-horizontal"></i></span>
+                                <span className={`${Styles.eyeopen}`}><i className="fa-regular fa-eye fa-flip-horizontal"></i></span>
                             </div>
-                            <input className={classes.textfieldlg} type="password" id="Password" placeholder='Mật khẩu mới'></input>
+                            <input className={`${Styles.textfieldlg}`} type="password" id="Password" placeholder='Mật khẩu mới'></input>
                         </div> 
-                        <div className={classes.listtextfieldpass}>
-                            <div className={classes.eyeposition}>
-                                <span className={classes.eyeclose}><i class="fa-regular fa-eye-slash fa-flip-horizontal"></i></span>
-                                <span className={classes.eyeopen}><i class="fa-regular fa-eye fa-flip-horizontal"></i></span>
+                        <div className={`${Styles.listtextfieldpass}`}>
+                            <div className={`${Styles.eyeposition}`}>
+                                <span className={`${Styles.eyeclose}`}><i className="fa-regular fa-eye-slash fa-flip-horizontal"></i></span>
+                                <span className={`${Styles.eyeopen}`}><i className="fa-regular fa-eye fa-flip-horizontal"></i></span>
                             </div>
-                            <input className={classes.textfieldlg} type="password" id="Password" placeholder='Nhập lại mật khẩu mới'></input>
+                            <input className={`${Styles.textfieldlg}`} type="password" id="Password" placeholder='Nhập lại mật khẩu mới'></input>
                         </div> 
                         {/* /Text Field */}
                         
                         {/* Submit */}
-                        <div className={classes.resetpass}>
-                            <Link >
-                                <Button className={classes.buttonsub} variant="contained" disableElevation>
+                        <div className={`${Styles.resetpass}`}>
+                                <Button className={`${Styles.buttonsub}`} variant="contained" disableElevation>
                                     Xác nhận
                                 </Button>
-                            </Link>
                         </div>
                         
-                        <div className={classes.listtextfoot}>
-                            <p className={classes.linefoot}></p>
-                            <p className={classes.backtologin}>
-                                <Link className={classes.forgotpass} >Quay lại đăng nhập</Link>
+                        <div className={`${Styles.listtextfoot}`}>
+                            <p className={`${Styles.linefoot}`}></p>
+                            <p className={`${Styles.backtologin}`}>
+                                <Link className={`${Styles.forgotpass}`} to='\'>Quay lại đăng nhập</Link>
                             </p>
                         </div>
                         {/* /Submit */}
