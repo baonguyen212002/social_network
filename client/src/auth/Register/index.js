@@ -1,11 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Styles from '../Register/style.css';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 
 function Register() {
 
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const [username,setUsername] = useState('');
+
+    async function submit(e){
+        e.preventDefault();
+
+        try {
+            await axios.post('http://localhost:3000/register',{
+                email,password,username
+            })
+            .then (res=>{
+                if(res.data == 'exist'){
+                    alert('Tài khoản đã tồn tại');
+                }
+                else if(res.data == 'notexist'){
+                    alert('Tạo tài khoản thành công');
+                }
+            })
+            .catch(e=>{
+                console.log(email,password, username);
+                alert('wrong details');
+            })
+
+        } catch (error) {
+            console.log('error', error);
+        }
+    }
     return (
         <div className={`${Styles.container}`}>
             <form action='POST'>
@@ -26,24 +54,24 @@ function Register() {
                     {/* Text Field */}
                     <div className={`${Styles.listtextfieldlg}`}>
                         {/* <TextField className={`${Styles.textfieldlg}`} label="Email" variant="filled" size="small"/> */}
-                        <input className={`${Styles.textfieldlg}`} type="email" id="Email" placeholder='Email'></input>
+                        <input className={`${Styles.textfieldlg}`} type="email" id="Email" placeholder='Email' onChange={(e)=>{setEmail(e.target.value)}}/>
                     </div>
                     <div className={`${Styles.listtextfieldlg}`}>
                         {/* <TextField className={`${Styles.textfieldlg}`} label="Email" variant="filled" size="small"/> */}
-                        <input className={`${Styles.textfieldlg}`} type="username" id="UserName" placeholder='Tên tài khoản'></input>
+                        <input className={`${Styles.textfieldlg}`} type="username" id="UserName" placeholder='Tên tài khoản' onChange={(e)=>{setUsername(e.target.value)}}/>
                     </div>
                     <div className={`${Styles.listtextfieldpass}`}>
                         <div className={`${Styles.eyeposition}`}>
                             <span className={`${Styles.eyeclose}`}><i className="fa-regular fa-eye-slash fa-flip-horizontal"></i></span>
                             <span className={`${Styles.eyeopen}`}><i className="fa-regular fa-eye fa-flip-horizontal"></i></span>
                         </div>
-                        <input className={`${Styles.textfieldlg}`} type="password" id="Password" placeholder='Mật khẩu'></input>
+                        <input className={`${Styles.textfieldlg}`} type="password" id="Password" placeholder='Mật khẩu' onChange={(e)=>{setPassword(e.target.value)}}/>
                     </div>
                     {/* /Text Field */}
 
                     {/* Submit */}
                     <div className={`${Styles.listtextfieldpass}`}>
-                        <Button className={`${Styles.buttonregis}`} variant="contained">
+                        <Button className={`${Styles.buttonregis}`} variant="contained" type='submit' onClick={submit}>
                             Đăng ký
                         </Button>
                     </div>
