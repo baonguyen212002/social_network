@@ -40,10 +40,10 @@
 
 .btn_follow,.btn_messager,
 .btn_addfr {
-   position: absolute;
+   position: absolute !important;
    top: 10%;
-   color: white;
-   background-color: black;
+   color: white !important;
+background-color: black !important;
    opacity: 0.6;
    border: none;
    cursor: pointer;
@@ -66,13 +66,13 @@
 }
 
 .btn_editfprofile {
-   position: absolute;
+   position: absolute !important;
    top: 10%;
    left: 20%;
-   color: white;
-   background-color: black;
+   color: white !important;
+   background-color: black !important;
    opacity: 0.6;
-   border: none;
+   border: none ;
    cursor: pointer;
 
    &:hover {
@@ -81,8 +81,9 @@
       color: white;
    }
 }
+
 .btn_moresetting {
-   position: absolute;
+   position: absolute !important;
    top: -5px;
    left: 70%;
 
@@ -94,8 +95,8 @@
 }
 
 .span_detail {
-   position: relative;
-   color: #000;
+   position: relative !important;
+   color: #000 !important;
    opacity: 0.6;
    font-size: 18px;
    font-weight: 400;
@@ -113,6 +114,7 @@
 .profile_bd {
    text-align: center;
    font-size: 24px;
+   padding-left: 5%;
 }
 
 .profile_posts,
