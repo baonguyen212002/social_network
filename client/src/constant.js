@@ -3,4 +3,15 @@ export const INIT_STATE = {
         isLoading: false,
         data: [],
     },
+    auth: {
+        isLoading: false,
+        auth: false,
+        data: '',
+      },
+      message:{
+        isLoading: false,
+        data:[],
+        users: [],
+        room: ''
+      },
 };
