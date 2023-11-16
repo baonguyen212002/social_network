@@ -1,16 +1,35 @@
-import React from 'react';
-import useStyles from './style';
-import { Link } from 'react-router-dom';
+import React, { useCallback, useEffect, useState } from 'react';
+import classes   from './style.module.css';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginState$ } from '../../redux/selectors';
+import { register } from '../../redux/actions/auth';
 
 
 function Register() {
-    const classes = useStyles();
+    const [data, setData] = useState({email: '',username: '', password: ''})
+    const [err, setErr] = useState()
+    const dispatch =  useDispatch()
+    const selector = useSelector(loginState$);
+    const navigator = useNavigate();
+    const handleRegister  =  useCallback(()=>{
+        dispatch(register.registerRequest(data))
+    },[data, dispatch])
+    useEffect(()=>{
+        if (selector.auth && localStorage.getItem('auth_token')) {
+            navigator('/')
+            localStorage.setItem('token', selector.data.token)
+        }else{
+            setErr(selector.data.err)
+        }
+        console.log(err);
+    },[ selector])
     return (
-        <div className={classes.container}>
-            <div className={classes.formlg}>
+        <div className={`${classes.container}`}>
+            <div className={`${classes.formlg}`}>
                         {/* Logo */}
-                        <div className={classes.socical_network}>
+                        <div className={`${classes.socical_network}`}>
                             <svg aria-label="Instagram" className="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)"
                                 height="50" role="img" viewBox="32 4 113 32" width="130">
                             <path clipRule="evenodd"
@@ -19,37 +38,41 @@ function Register() {
                             </svg>
                         </div>
                         {/* /Logo */}
-                        <div className={classes.detail}>
-                            <p className={classes.title}>Đăng ký để xem thông tin về bạn bè của bạn.</p>
+                        <div className={`${classes.detail}`}>
+                            <p className={`${classes.title}`}>Đăng ký để xem thông tin về bạn bè của bạn.</p>
                         </div>
                         {/* Text Field */}
-                        <div className={classes.listtextfieldlg}>
+                        <div className={`${classes.listtextfieldlg}`}>
                             {/* <TextField className={classes.textfieldlg} label="Email" variant="filled" size="small"/> */}
-                            <input className={classes.textfieldlg} type="email" id="Email" placeholder='Email'></input>
+                            <input  onChange={e=>setData({...data, email: e.target.value})} className={`${classes.textfieldlg}`} type="email" id="Email" placeholder='Email'></input>
+                <div style={{color: 'red'}}>{err ? err[0]?.email || err[1]?.email ||err[2]?.email  :''}</div>
+                        
                         </div>
-                        <div className={classes.listtextfieldlg}>
+                        <div className={`${classes.listtextfieldlg}`}>
                             {/* <TextField className={classes.textfieldlg} label="Email" variant="filled" size="small"/> */}
-                            <input className={classes.textfieldlg} type="username" id="UserName" placeholder='Tên tài khoản'></input>
+                            <input onChange={e=>setData({...data, username: e.target.value})} className={`${classes.textfieldlg}`} type="username" id="UserName" placeholder='Tên tài khoản'></input>
+                <div style={{color: 'red'}}>{err ? err[0]?.username || err[1]?.username ||err[2]?.username  :''}</div>
+                        
                         </div>
-                        <div className={classes.listtextfieldpass}>
-                            <div className={classes.eyeposition}>
-                                <span className={classes.eyeclose}><i class="fa-regular fa-eye-slash fa-flip-horizontal"></i></span>
-                                <span className={classes.eyeopen}><i class="fa-regular fa-eye fa-flip-horizontal"></i></span>
+                        <div className={`${classes.listtextfieldpass}`}>
+                            <div className={`${classes.eyeposition}`}>
+                                <span className={`${classes.eyeclose}`}><i class="fa-regular fa-eye-slash fa-flip-horizontal"></i></span>
+                                <span className={`${classes.eyeopen}`}><i class="fa-regular fa-eye fa-flip-horizontal"></i></span>
                             </div>
-                            <input className={classes.textfieldlg} type="password" id="Password" placeholder='Mật khẩu'></input>
+                            <input onChange={e=>setData({...data, password: e.target.value})} className={`${classes.textfieldlg}`} type="password" id="Password" placeholder='Mật khẩu'></input>
+                <div style={{color: 'red'}}>{err ? err[0]?.password || err[1]?.password ||err[2]?.password  :''}</div>
+
                         </div> 
                         {/* /Text Field */}
                         
                         {/* Submit */}
-                        <div className={classes.listtextfieldpass}>
-                            <Link to={'/login'}>
+                        <div className={`${classes.listtextfieldpass}`}>
                                 <br></br>
-                                <Button className={classes.buttonregis} variant="contained">
+                                <Button onClick={handleRegister} className={`${classes.buttonregis}`} variant="contained">
                                     Đăng ký
                                 </Button>
-                            </Link>
                         </div>
-                        <div className={classes.listtextfieldpass}>
+                        <div className={`${classes.listtextfieldpass}`}>
                             Bạn đã có tài khoản? <Link to={'/login'}>&nbsp;Đăng nhập</Link>
                         </div>
                         {/* /Submit */}

@@ -23,7 +23,26 @@ export default function authReducers(state = INIT_STATE.auth, action) {
         auth: false,
         data: action.payload.response.data
       };
-   
+      case getType(register.registerRequest):
+        return {
+          ...state,
+          isLoading: true,
+          
+        };
+      case getType(register.registerSuccess):
+        return {
+          ...state,
+          isLoading: false,
+          auth: true,
+          data: action.payload,
+        };
+      case getType(register.registerFailure):
+        return {
+          ...state,
+          isLoading: false,
+          auth: false,
+          data: action.payload.response.data
+        };
     default:
       return state;
   }

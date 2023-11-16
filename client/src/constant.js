@@ -14,4 +14,10 @@ export const INIT_STATE = {
         users: [],
         room: ''
       },
+      modal:{
+        isOpen: false
+      },
+      modalSearch:{
+        isShow: false
+      }
 };

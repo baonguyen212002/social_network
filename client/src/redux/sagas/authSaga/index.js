@@ -14,9 +14,21 @@ function* loginSaga(action) {
 
   }
 }
+function* registerSaga(action) {
+  try {
+    // Gọi hàm API để lấy dữ liệu
+    const token = yield call(api.fetchRegister, action.payload);
+    localStorage.setItem('auth_token', token.data.token)
+    localStorage.setItem('auth_user', token.data.user)
+    yield put(authAction.register.registerSuccess(token.data.token));
+  } catch (error) {
+    yield put(authAction.register.registerFailure(error));
 
+  }
+}
 function* authSaga() {
   yield takeLatest(authAction.login.loginRequest, loginSaga);
+  yield takeLatest(authAction.register.registerRequest, registerSaga);
 }
 
 export default authSaga;
