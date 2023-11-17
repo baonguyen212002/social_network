@@ -1,3 +1,4 @@
+
 import React, { useCallback, useEffect, useState } from 'react';
 import classes from './style.module.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -22,12 +23,6 @@ function Login() {
         document.querySelector('#eyeClose').style.display  = 'none'
 
     },[])
-    const handleClosePassword = useCallback(()=>{
-        document.querySelector('#password').type  = 'password'
-        document.querySelector('#eyeOpen').style.display  = 'none'
-        document.querySelector('#eyeClose').style.display  = 'block'
-
-    },[])
     useEffect(()=>{
         if (selector.auth && localStorage.getItem('auth_token')) {
             navigator('/')
@@ -35,8 +30,8 @@ function Login() {
         }else{
             setErr(selector.data.err)
         }
-        console.log(err);
-    },[ selector])
+    }
+
     return (
         <div className={`${classes.container}`}>
             <Grid container spacing={2} columns={16}>
@@ -48,8 +43,10 @@ function Login() {
                             title="green iguana"
                         />
                     </div>
+
                 </Grid>
                 <Grid item xs={6} md={8}>
+
                 <div style={{color: 'red'}}>{!Array.isArray(err) ? err :''}</div>
 
                     <div className={`${classes.formlg}`}>
@@ -89,6 +86,14 @@ function Login() {
                                 <Button onClick={handleLogin} className={`${classes.buttonlogin}`} variant="contained">
                                     Trang chủ
                                 </Button>
+                            </div>
+                            <div className={`${Styles.listtextfieldpass}`}>
+                                <Link to='/forgotpass'>
+                                    <Button className={`${Styles.forgotpass}`} >Quên mật khẩu</Button>
+                                </Link>
+                            </div>
+
+                            {/* /Submit */}
                         </div>
                         <div className={`${classes.listtextfieldpass}`}>
                             <Link className={`${classes.forgotpass}`} to={'/forgotPass'}>Quên mật khẩu</Link>

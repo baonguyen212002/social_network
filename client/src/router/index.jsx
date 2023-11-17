@@ -14,13 +14,14 @@ import SearchPage from "../pages/search";
 import Login from "../auth/Login/";
 import Register from "../auth/Register/";
 import UpdateProfile from "../pages/UpdateProfile/inedex";
+import ForgotPass from "../auth/ForgotPass";
 
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" >
-      <Route path="/login" element={<Login />}></Route>
-      <Route path="/register" element={<Register />}></Route>
+      <Route path="/login" element={<Login />}/>
+      <Route path="/register" element={<Register />}/>
       <Route path="/*" element={<RootPage />}>
 
         <Route element={<HomePage />} index path="" />
@@ -31,6 +32,7 @@ export const router = createBrowserRouter(
         <Route element={<MessagesPage />} path="messages" />
         <Route element={<NotificationsPage />} path="notifications" />
         <Route element={<CreatesPage />} path="creates" />
+        <Route element={<ForgotPass />} path="forgotpass" />
       </Route>
     </Route>
   )

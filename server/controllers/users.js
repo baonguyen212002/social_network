@@ -3,15 +3,7 @@ import { UserModel } from "../models/UserModel.js";
 
 export const getUsers = async (req, res) => {
     try {
-        // test Data
-        // const user = new UserModel({
-        //     id: 2,
-        //     username: 'Nguyễn Văn B',
-        //     password: '123456',
-        //     email: 'B@mail.com',
-        // });
-        // user.save();
-
+        
         const users = await UserModel.find();
         console.log('users', users);
         res.status(200).json(users);
@@ -21,14 +13,51 @@ export const getUsers = async (req, res) => {
     }
 };
 
-export const createUser = async (req, res) => {
+export const checkUser = async (req, res) => {
+
+    const {email,password,username} = req.body;
+
     try {
-        const NewUser = req.body;
+        
+        // Tìm kiếm email, username trong UserModal
+        const checkUser = await UserModel.findOne({email:email, username:username});
+        
+        if(checkUser){
+            // Trả về đã tồn tại nếu xuất hiện trong UserModal
+            res.json('exist'); 
+        }
+        else {
+            // Trả về chưa tồn tại nếu không xuất hiện trong UserModal
+            res.json('notexist');
+        }
+        
 
-        const users = new UserModel(NewUser);
-        await users.save();
+    } catch (error) {
+        res.status(500).json({error: err});
+    }
+};
 
-        res.status(200).json(users);
+export const creatUser = async (req, res) => {
+
+    const {email,password,username} = req.body;
+    const data = {
+        email:email,
+        password:password,
+        username:username
+    };
+  
+    try {
+        
+        const checkUser = await UserModel.findOne({email:email, username:username});
+        
+        if(checkUser){
+            res.json('exist');
+        }
+        else {
+            res.json('notexist');
+            await UserModel.insertMany([data]);
+        }
+        
 
     } catch (error) {
         res.status(500).json({error: err});
