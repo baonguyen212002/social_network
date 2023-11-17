@@ -8,7 +8,6 @@ import { login } from '../../redux/actions/auth';
 import { loginState$ } from '../../redux/selectors';
 
 function Login() {
-    // const classes = useStyles();
     const [data, setData] = useState({email: '', password: ''})
     const [err, setErr] = useState()
     const dispatch =  useDispatch()
