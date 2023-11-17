@@ -1,11 +1,18 @@
 import express from 'express';
-import {getUsers, checkUser, creatUser} from '../controllers/users.js'
+
+import {getUsers, createUser, updateUser, getUserUpdate, search } from '../controllers/users.js'
+import { authenticateJWT } from '../middleware/index.js';
+
 
 const router = express.Router();
 
 router.get('/', getUsers);
 
-router.post('/', checkUser);
+router.post('/', createUser);
+router.post('/update/get-user',authenticateJWT, getUserUpdate);
+router.post('/update',authenticateJWT, updateUser);
+router.post('/search',authenticateJWT, search);
 router.post('/register', creatUser);
+
 
 export default router;

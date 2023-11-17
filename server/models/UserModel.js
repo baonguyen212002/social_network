@@ -11,8 +11,9 @@ const schema = new mongoose.Schema({
     username: {
         type: String,
         require: true,
-        default: 'Anomyous',
-        maxlength: 150
+        minlength: 5,
+        maxlength: 150,
+        unique: true
     },
     password: {
         type: String,
@@ -21,22 +22,11 @@ const schema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        maxlength: 150
+        maxlength: 150,
+        unique: true
     },
     //Created_at , Updated_at
 }, { timestamps: true} 
 );
-
-schema.pre('save', async function(next) {
-    const hashedPassword = await hashPassword(this.password);
-    this.password = hashedPassword;
-    next();
-  });
-  
-  async function hashPassword(password) {
-    const hash = crypto.createHash("md5");
-    hash.update(password);
-    return hash.digest("hex");
-  }
 
 export const UserModel = mongoose.model('Users', schema);

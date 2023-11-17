@@ -1,16 +1,9 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
-import * as actions from '../actions';
-import * as api from '../../api';
-
-function* fetchPostSaga(action) {
-    const posts = yield call(api.fetchPost);
-    console.log('[posts]',posts);
-    yield put(actions.getPosts.getPostsSuccess(posts));
-}
-
-function* mySaga() {
-    yield takeLatest(actions.getPosts.getPostsRequest, fetchPostSaga)
-
-}
-
-export default mySaga;
+import { all } from 'redux-saga/effects';
+import authSaga from './authSaga/index'
+import postSaga from './postSaga/index';
+import messageSaga from './messageSaga/index';
+function* rootSaga() {
+    yield all([authSaga(), postSaga(), messageSaga()]);
+  }
+  
+  export default rootSaga;

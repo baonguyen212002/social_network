@@ -1,5 +1,6 @@
+
 import express from "express";
-import { getPosts } from "../controllers/posts.js";
+import { getPosts, updatePost } from "../controllers/posts.js";
 import { PostModel } from "../models/PostModel.js";
 import multer from "multer";
 import path from "path";
@@ -48,5 +49,7 @@ router.post("/create-post", upload.array("images"), async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+router.post('/update', updatePost);
+
 
 export default router;
