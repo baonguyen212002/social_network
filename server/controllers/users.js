@@ -13,56 +13,56 @@ export const getUsers = async (req, res) => {
     }
 };
 
-export const checkUser = async (req, res) => {
+// export const checkUser = async (req, res) => {
 
-    const {email,password,username} = req.body;
+//     const {email,password,username} = req.body;
 
-    try {
+//     try {
         
-        // Tìm kiếm email, username trong UserModal
-        const checkUser = await UserModel.findOne({email:email, username:username});
+//         // Tìm kiếm email, username trong UserModal
+//         const checkUser = await UserModel.findOne({email:email, username:username});
         
-        if(checkUser){
-            // Trả về đã tồn tại nếu xuất hiện trong UserModal
-            res.json('exist'); 
-        }
-        else {
-            // Trả về chưa tồn tại nếu không xuất hiện trong UserModal
-            res.json('notexist');
-        }
+//         if(checkUser){
+//             // Trả về đã tồn tại nếu xuất hiện trong UserModal
+//             res.json('exist'); 
+//         }
+//         else {
+//             // Trả về chưa tồn tại nếu không xuất hiện trong UserModal
+//             res.json('notexist');
+//         }
         
 
-    } catch (error) {
-        res.status(500).json({error: err});
-    }
-};
+//     } catch (error) {
+//         res.status(500).json({error: err});
+//     }
+// };
 
-export const creatUser = async (req, res) => {
+// export const createUser = async (req, res) => {
 
-    const {email,password,username} = req.body;
-    const data = {
-        email:email,
-        password:password,
-        username:username
-    };
+//     const {email,password,username} = req.body;
+//     const data = {
+//         email:email,
+//         password:password,
+//         username:username
+//     };
   
-    try {
+//     try {
         
-        const checkUser = await UserModel.findOne({email:email, username:username});
+//         const checkUser = await UserModel.findOne({email:email, username:username});
         
-        if(checkUser){
-            res.json('exist');
-        }
-        else {
-            res.json('notexist');
-            await UserModel.insertMany([data]);
-        }
+//         if(checkUser){
+//             res.json('exist');
+//         }
+//         else {
+//             res.json('notexist');
+//             await UserModel.insertMany([data]);
+//         }
         
 
-    } catch (error) {
-        res.status(500).json({error: err});
-    }
-};
+//     } catch (error) {
+//         res.status(500).json({error: err});
+//     }
+// };
 
 export const getUserUpdate=async(req, res)=>{
     try {

@@ -79,7 +79,6 @@ function Register() {
                     </div>
                     {/* /Submit */}
                 </div>
-            </form>
         </div>
     );
 }
