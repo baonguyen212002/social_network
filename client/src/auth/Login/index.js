@@ -44,7 +44,7 @@ function Login() {
                     <div className={`${classes.logo}`}>
                         <CardMedia
                             sx={{ height: 300, width: 300 }}
-                            image="https://i.imgur.com/xbuBfWp.png"
+                            image="https://img.freepik.com/premium-vector/globe-icon-vector-world-wide-web-symbol-icon_654297-210.jpg?w=1060"
                             title="green iguana"
                         />
                     </div>

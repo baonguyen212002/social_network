@@ -116,8 +116,7 @@ export const register = async (req, res) => {
       if (!token) {
         return res.status(401).json({ message: 'Unauthorized' });
       }
-      const decoded = jwt.verify(token, 'abc-xyz');
-      await UserModel.findByIdAndUpdate({_id : decoded.id}, { $pull: { tokens: token } }, { new: true }, (err, user) => {
+      await UserModel.findByIdAndUpdate({_id : req._id}, { $pull: { tokens: token } }, { new: true }, (err, user) => {
         if (err) {
           return res.status(500).json({ message: 'Internal Server Error' });
         }
