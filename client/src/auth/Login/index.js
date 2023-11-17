@@ -29,7 +29,7 @@ function Login() {
         }else{
             setErr(selector.data.err)
         }
-    }
+    })
 
     return (
         <div className={`${classes.container}`}>
@@ -68,7 +68,7 @@ function Login() {
                         <div className={`${classes.listtextfieldpass}`}>
                             <div className={`${classes.eyeposition}`}>
                                 <span className={`${classes.eyeclose}`} id='eyeClose' onClick={handleShowPassword}><i class="fa-regular fa-eye-slash fa-flip-horizontal"></i></span>
-                                <span className={`${classes.eyeopen}`} id='eyeOpen' onClick={handleClosePassword}><i class="fa-regular fa-eye fa-flip-horizontal"></i></span>
+                                <span className={`${classes.eyeopen}`} id='eyeOpen'><i class="fa-regular fa-eye fa-flip-horizontal"></i></span>
                             </div>
                             <input className={`${classes.textfieldlg}`} onChange={(e) => setData({ ...data, password: e.target.value })} type="password" id="password" placeholder='Password'/>
                             <div>{err ? (err[1]?.password || err[0]?.password) :''}</div>
@@ -86,11 +86,12 @@ function Login() {
                                     Trang chủ
                                 </Button>
                             </div>
-                            <div className={`${Styles.listtextfieldpass}`}>
+
+                            {/* <div className={`${Styles.listtextfieldpass}`}>
                                 <Link to='/forgotpass'>
                                     <Button className={`${Styles.forgotpass}`} >Quên mật khẩu</Button>
                                 </Link>
-                            </div>
+                            </div> */}
 
                             {/* /Submit */}
                         </div>
@@ -99,7 +100,7 @@ function Login() {
                         </div>
                        
                         {/* /Submit */}
-                    </div>
+                    
                     <div className={`${classes.register}`}>
                         Bạn chưa có tài khoản? <Link to={'/register'}>&nbsp;Đăng ký</Link>
                     </div>     

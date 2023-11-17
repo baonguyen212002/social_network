@@ -35,13 +35,13 @@ const handleOpenModal = (type) => {
                         <Typography variant='h3'>Linh</Typography> 
 
                         {/* Nếu xem trang cá nhân bản thân */}
-                        {/* <Button className={`${styles.btn_editfprofile}`} sx={{width: 300, height: 40}}>Chỉnh sửa trang cá nhân</Button>
-                        <IconButton className={`${styles.btn_moresetting}`} ><MoreHorizIcon sx={{width: 50, height: 50}}/></IconButton> */}
+                        <Button className={`${styles.btn_editfprofile}`} sx={{width: 300, height: 40}}>Chỉnh sửa trang cá nhân</Button>
+                        <IconButton className={`${styles.btn_moresetting}`} ><MoreHorizIcon sx={{width: 50, height: 50}}/></IconButton>
 
                         {/* Nếu xem trang cá nhân người khác */}
-                        <Button className={`${styles.btn_follow}`} sx={{width: 200, height: 40}}>Theo dõi</Button>
+                        {/* <Button className={`${styles.btn_follow}`} sx={{width: 200, height: 40}}>Theo dõi</Button>
                         <Button className={`${styles.btn_messager}`} sx={{width: 200, height: 40}}>Nhắn tin</Button>
-                        <Button className={`${styles.btn_addfr}`} sx={{width: 100, height: 40}}><GroupAddIcon /></Button>
+                        <Button className={`${styles.btn_addfr}`} sx={{width: 100, height: 40}}><GroupAddIcon /></Button> */}
                         
 
                     </div>
