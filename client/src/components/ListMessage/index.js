@@ -20,7 +20,7 @@ function ListMessage({ messages }) {
         }
         const a = document.createElement('a');
         a.href = url;
-        a.download = e.target.getAttribute('data-name'); // Đặt tên file khi tải về
+        a.download = e.target.getAttribute('data-name'); 
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);

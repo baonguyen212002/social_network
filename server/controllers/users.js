@@ -52,6 +52,7 @@ export const updateUser=async(req, res)=>{
         let user=''
         const check = await BioModel.find({user_id: req.user.id});
         if (check) {
+            console.log(data2);
              user = await BioModel.findOneAndUpdate({user_id: req.user.id}, data2,{new: true});
             
             }else{
