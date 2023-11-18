@@ -44,6 +44,7 @@ io.on('connection', (socket)=>{
             type: data.type,
             file: data.file
         })
+        console.log(data);
     })
     socket.on('error', function (err) {
         console.log("Socket.IO Error");

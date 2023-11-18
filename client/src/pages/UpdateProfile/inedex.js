@@ -2,6 +2,7 @@ import { Avatar, Button, CardHeader, MenuItem, Select, TextField, TextareaAutosi
 import React, { useCallback, useEffect, useState } from 'react';
 import classess from './style.module.css'
 import axios from 'axios';
+import Swal from 'sweetalert2'
 function UpdateProfile() {
     const [user, setUser] = useState()
     const [data, setData] = useState({
@@ -36,9 +37,12 @@ function UpdateProfile() {
         axios.post('http://localhost:5000/users/update',{data: data}, {headers: headers})
         .then(user=>{
             setUser(user)
+            Swal.fire("Cập nhật thông tin thành công");
         })
         .catch(error=>{
             console.log(error);
+            Swal.fire("Cập nhật thông tin thất bại");
+
         })
     },[data])
     return (
