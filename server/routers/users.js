@@ -1,6 +1,6 @@
 import express from 'express';
 
-import {getUsers, updateUser, getUserUpdate, search } from '../controllers/users.js'
+import {getUsers, updateUser, getUserUpdate, search, getProfile } from '../controllers/users.js'
 import { authenticateJWT } from '../middleware/index.js';
 
 
@@ -13,6 +13,7 @@ router.post('/update/get-user',authenticateJWT, getUserUpdate);
 router.post('/update',authenticateJWT, updateUser);
 router.post('/search',authenticateJWT, search);
 // router.post('/register', createUser);
+router.post('/profile',authenticateJWT, getProfile);
 
 
 export default router;
