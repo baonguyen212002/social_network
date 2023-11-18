@@ -19,7 +19,7 @@ var io = new Server(http.createServer(app).listen(5001), {
 });
 const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true, limit: '30mb'}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 connect(app)
 

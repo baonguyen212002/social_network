@@ -1,15 +1,14 @@
 import React from 'react';
-import useStyles from './style';
-import { Link } from 'react-router-dom';
+import Styles from '../ForgotPass/style.css';
 import { Button, CardMedia } from '@mui/material';
-
+import { Link } from 'react-router-dom';
 
 function ForgotPass() {
-    const classes = useStyles();
     return (
-        <div className={classes.container}>
+        // className={`${Styles.logo}`}
+        <div className={`${Styles.container}`}>
             {/* Logo */}
-            <div className={classes.socical_network}>
+            <div className={`${Styles.socical_network}`}>
                             <svg aria-label="Instagram" className="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)"
                                 height="50" role="img" viewBox="32 4 113 32" width="130">
                             <path clipRule="evenodd"
@@ -18,44 +17,47 @@ function ForgotPass() {
                             </svg>
                         </div>
             {/* /Logo */}
-            <div className={classes.formlg}>
-                    <div className={classes.logo}>
-                        <CardMedia className={classes.imgcard}
+            <div className={`${Styles.formlg}`}>
+                    <div className={`${Styles.logo}`}>
+                        <CardMedia className={`${Styles.imgcard}`}
                             sx={{ height: 50, width: 50 }}
                             image="https://i.imgur.com/N5d2ofF.png"
                             title="green iguana"
                         />
                     </div>
-                        <div className={classes.detail}>
-                            <p className={classes.ques}>Bạn gặp sự cố khi đăng nhập ?</p>
-                            <p className={classes.title}>Nhập email của bạn và chúng tôi sẽ gửi cho bạn một liên kết để truy cập lại vào tài khoản.</p>
+                        <div className={`${Styles.detail}`}>
+                            <p className={`${Styles.ques}`}>Bạn gặp sự cố khi đăng nhập ?</p>
+                            <p className={`${Styles.title}`}>Nhập email của bạn và chúng tôi sẽ gửi cho bạn một liên kết để truy cập lại vào tài khoản.</p>
                         </div>
                         {/* Text Field */}
-                        <div className={classes.listtextfieldlg}>
-                            {/* <TextField className={classes.textfieldlg} label="Email" variant="filled" size="small"/> */}
-                            <input className={classes.textfieldlg} type="email" id="Email" placeholder='Email'></input>
+                        <div className={`${Styles.listtextfieldlg}`}>
+                            {/* <TextField className={`${Styles.textfieldlg}`} label="Email" variant="filled" size="small"/> */}
+                            <input className={`${Styles.textfieldlg}`} type="email" id="Email" placeholder='Email'></input>
                         </div>
                         {/* /Text Field */}
                         
                         {/* Submit */}
-                        <div className={classes.listtextfieldpass}>
-                            <Link to={'/resetpass'}>
-                                <Button className={classes.buttonregis} variant="contained" disableElevation>
+                        <div className={`${Styles.listtextfieldpass}`}>
+                            
+                                <Button className={`${Styles.buttonregis}`} variant="contained" disableElevation>
                                     Gửi liên kết đăng nhập
                                 </Button>
+                        </div>
+                        <div className={`${Styles.textor}`}>
+                            Hoặc
+                            <p className={`${Styles.lineleft}`}></p>
+                            <p className={`${Styles.lineright}`}></p>
+                        </div>
+                        <div className={`${Styles.listtextfoot}`}>
+                        <Link to='/register'>
+                            <Button className={`${Styles.forgotpass}`} >Tạo tài khoản mới</Button>
                             </Link>
                         </div>
-                        <div className={classes.textor}>
-                            Hoặc
-                            <p className={classes.lineleft}></p>
-                            <p className={classes.lineright}></p>
-                        </div>
-                        <div className={classes.listtextfoot}>
-                            <Link className={classes.forgotpass} to={'/register'}>Tạo tài khoản mới</Link>
-                        </div>
-                        <div className={classes.listtextfoot}>
-                            <p className={classes.linefoot}></p>
-                            <Link className={classes.forgotpass} to={'/login'}>Quay lại đăng nhập</Link>
+                        <div className={`${Styles.listtextfoot}`}>
+                            <p className={`${Styles.linefoot}`}></p>
+                            <Link to='/'>
+                            <Button className={`${Styles.forgotpass}`} >Quay lại đăng nhập</Button>
+                            </Link>
                         </div>
                         {/* /Submit */}
                     </div>

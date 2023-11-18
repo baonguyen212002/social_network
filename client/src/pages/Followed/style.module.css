@@ -7,7 +7,6 @@
         height: 610px;
         transform: translate(-50% -50%);
         background: white;
-        border: 2px solid #000;
         box-shadow: 24;
     }
     .searchHeader {
