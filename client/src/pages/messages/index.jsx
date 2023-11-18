@@ -44,8 +44,9 @@ function MessagesPage() {
     socket.emit('send', data)
     dispatch(actions.createMessage.createMessageSuccess(data))
     setContent('')
+    console.log(chooseUser);
 
-  }, [content, dispatch,type])
+  }, [content, dispatch,type,chooseUser])
   const onEmojiClick = (event, emojiObject) => {
     setContent((prevInput) => prevInput + event.emoji);
     setShowPicker(false);
@@ -63,7 +64,6 @@ function MessagesPage() {
   })
   const handleFilebase64 = (e)=>{
    
-    console.log(content);
     const data = {
       room: localStorage.getItem('room'),
       content: e.name, 
