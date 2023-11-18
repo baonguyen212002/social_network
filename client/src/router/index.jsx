@@ -11,20 +11,18 @@ import NotificationsPage from "../pages/notifications";
 import ProfilePage from "../pages/Profile";
 import RootPage from "../global/root";
 import SearchPage from "../pages/search";
-import Login from "../auth/Login/";
-import Register from "../auth/Register/";
 import UpdateProfile from "../pages/UpdateProfile/inedex";
 import ForgotPass from "../auth/ForgotPass";
 
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" >
-      <Route path="/login" element={<Login />}/>
-      <Route path="/register" element={<Register />}/>
-      <Route path="/*" element={<RootPage />}>
 
-        <Route element={<HomePage />} index path="" />
+      <Route path="/" element={<RootPage />}>
+
+
+        <Route element={<HomePage />} path="" />
+        <Route element={<HomePage />} path="/home" />
         <Route element={<ExplorePage />} path="explore" />
         <Route element={<UpdateProfile />} path="update/user" />
         <Route element={<SearchPage />} path="search" />
@@ -34,6 +32,5 @@ export const router = createBrowserRouter(
         <Route element={<CreatesPage />} path="creates" />
         <Route element={<ForgotPass />} path="forgotpass" />
       </Route>
-    </Route>
   )
 );

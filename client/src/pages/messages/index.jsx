@@ -43,12 +43,10 @@ function MessagesPage() {
     }
     socket.emit('send', data)
     dispatch(actions.createMessage.createMessageSuccess(data))
-    console.log(messages);
+    setContent('')
 
-    // dispatch(actions.createMessage.createMessageRequest({'content': content,'receiver_user_id': param['*']}))
   }, [content, dispatch,type])
   const onEmojiClick = (event, emojiObject) => {
-    console.log(event);
     setContent((prevInput) => prevInput + event.emoji);
     setShowPicker(false);
 
@@ -79,6 +77,29 @@ function MessagesPage() {
     dispatch(actions.createMessage.createMessageSuccess(data))
     
   }
+   const handleInput = (e) => {
+    const newText = e.target.value;
+    const replacedText = replaceEmojis(newText);
+    setContent(replacedText);
+  };
+  const replaceEmojis = (text) => {
+    const emojiMap = {
+      ':\\/': '🫤',
+      ':\\4': '👍',
+      ':\\P': '😝',
+      ':\\)': '😊',
+      ':\\(': '☹️',
+      ':\\D': '😄',
+      
+    };
+
+    let replacedText = text;
+    for (const [emojiKey, emojiValue] of Object.entries(emojiMap)) {
+      replacedText = replacedText.replace(new RegExp(emojiKey, 'g'), emojiValue);
+    }
+
+    return replacedText;
+  };
   return (
     <Grid container style={{ flexDirection: 'row-reverse' }} spacing={3}>
       <Grid item xs={2.5} className={`${classess.box_message}`} >
@@ -110,7 +131,7 @@ function MessagesPage() {
           <IconButton  >
             <MoodRounded onClick={() => setShowPicker(value => !value)}></MoodRounded>
           </IconButton>
-          <input className={`${classess.comment}`} value={content} onChange={(e) => setContent(e.target.value)} placeholder='Nhập tin nhắn của bạn' />
+          <input className={`${classess.comment}`} value={content} onChange={handleInput} placeholder='Nhập tin nhắn của bạn' />
 
           <div style={{ display: 'none' }} id='chooseFile'>
 

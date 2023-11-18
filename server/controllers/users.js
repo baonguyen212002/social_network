@@ -29,13 +29,13 @@ export const updateUser = async (req, res) => {
         let user = ''
         const check = await BioModel.find({ user_id: req.user.id });
         if (check) {
-            user = await BioModel.findOneAndUpdate({ user_id: req.user.id }, data2, { new: true });
-
-        } else {
-            user = new BioModel(data2)
-            await user.save()
-        }
-        res.status(200).json(user);
+             user = await BioModel.findOneAndUpdate({user_id: req.user.id}, data2,{new: true});
+            
+            }else{
+                user = new BioModel(data2)
+                await user.save()
+            }
+            res.status(200).json(user);
 
     } catch (err) {
         res.status(500).json({ error: err });

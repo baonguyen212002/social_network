@@ -134,8 +134,9 @@ export const register = async (req, res) => {
   };
   export const checkLogin =  (req, res)=>{
     try {
-      return true 
+      return res.status(200).json(true) 
     } catch (error) {
-      return false
+      return        res.status(401).json(false) 
+
     }
   }

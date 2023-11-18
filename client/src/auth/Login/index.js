@@ -23,9 +23,9 @@ function Login() {
 
     },[])
     useEffect(()=>{
-        if (selector.auth && localStorage.getItem('auth_token')) {
-            navigator('/')
-            localStorage.setItem('token', selector.data.token)
+        if (selector.auth || localStorage.getItem('auth_token')) {
+            
+            window.location.href = '/home'
         }else{
             setErr(selector.data.err)
         }
