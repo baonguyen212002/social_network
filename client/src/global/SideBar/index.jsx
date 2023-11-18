@@ -99,13 +99,6 @@ const handleShowModalSearch = useCallback(()=>{
           />
         </div>
         <Search/>
-        {/* <NavItem
-          icon={<IconExplore />}
-          activeIcon={<IconExploreActive />}
-          isActive={tabActive === "explore"}
-          title={"Explore"}
-          onClick={() => onClickTab("explore")}
-        /> */}
         <NavItem
           icon={<IconMessages />}
           activeIcon={<IconMessagesActive />}
@@ -139,12 +132,6 @@ const handleShowModalSearch = useCallback(()=>{
           title={"Profile"}
           onClick={() => onClickTab("profile")}
         />
-        {/* <NavItem
-          activeIcon={<MenuAvatar url={userAvatar} isActive={true} />}
-          isActive={tabActive === "update_profile"}
-          title={"Update Profile"}
-          onClick={() => onClickTab("update/user")}
-        /> */}
       </div>
       <div className={`${styles.hide_icon_more} mb-6`}>
         <NavItem
