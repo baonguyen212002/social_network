@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './style.modal.css';
+import styles from './style.module.css';
 import { Avatar, Card, Grid, CardMedia } from "@mui/material";
 import SettingsIcon from '@mui/icons-material/Settings';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -134,11 +134,11 @@ export default function Comment() {
 
             <div className={`${styles.content}`}>
                 {statusUser}{statusUser}
-                {/* {statusUser}{statusUser}
                 {statusUser}{statusUser}
                 {statusUser}{statusUser}
                 {statusUser}{statusUser}
-                {statusUser}{statusUser} */}
+                {statusUser}{statusUser}
+                {statusUser}{statusUser}
             </div>
 
             <div className={`${styles.inputSticky}`}>
@@ -149,14 +149,14 @@ export default function Comment() {
 
     const content_Left = (
         <CardMedia
-            image={'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwall.alphacoders.com%2Fbig.php%3Fi%3D1294713&psig=AOvVaw2RuF3w57sHWPe6BlS2TRn4&ust=1700336889461000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIia2NPmy4IDFQAAAAAdAAAAABAE'}
+            image={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJCffxOKRLn21jLPSYrtR5knqhMJ7jWsq9EQ&usqp=CAU'}
             title="Content-comment-img"
-            className={styles.img_post}
+            className={`${styles.img_post}`}
         />
     );
     return (
         <div>
-            <Card variant="outlined" spacing={2} className={styles.content_post}>
+            <Card variant="outlined" spacing={2} className={`${styles.content_post}`}>
                 <Grid container spacing={0}>
 
                     <Grid item md={7}>
