@@ -1,6 +1,7 @@
 import { Avatar, Button, Grid, IconButton, Typography } from '@mui/material';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 import styles from '../../pages/Profile/style.module.css';
 import ModalFollowed from '../../components/Modal/Modal_Followed';
 import ModalFollowing from '../../components/Modal/Modal_Followeing';
@@ -74,7 +75,9 @@ function Profile() {
                             còn không thì vào trang cá nhân của người khác */}
                         {users && userId === users[0]._id ? (
                             <Grid className={`${styles.profile_user}`}>
-                                <Button className={`${styles.btn_editfprofile}`} sx={{ width: 300, height: 40 }}>Chỉnh sửa trang cá nhân</Button>
+                                <Link to='/update/user'>
+                                    <Button className={`${styles.btn_editfprofile}`} sx={{ width: 300, height: 40 }}>Chỉnh sửa trang cá nhân</Button>
+                                </Link>
                                 <IconButton className={`${styles.btn_moresetting}`} ><MoreHorizIcon sx={{ width: 50, height: 50 }} /></IconButton>
                             </Grid>
                         ) : (
