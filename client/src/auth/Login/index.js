@@ -1,3 +1,4 @@
+
 import React, { useCallback, useEffect, useState } from 'react';
 import classes from './style.module.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -21,12 +22,6 @@ function Login() {
         document.querySelector('#eyeClose').style.display  = 'none'
 
     },[])
-    const handleClosePassword = useCallback(()=>{
-        document.querySelector('#password').type  = 'password'
-        document.querySelector('#eyeOpen').style.display  = 'none'
-        document.querySelector('#eyeClose').style.display  = 'block'
-
-    },[])
     useEffect(()=>{
         if (selector.auth || localStorage.getItem('auth_token')) {
             
@@ -34,8 +29,8 @@ function Login() {
         }else{
             setErr(selector.data.err)
         }
-        console.log(err);
-    },[ selector])
+    })
+
     return (
         <div className={`${classes.container}`}>
             <Grid container spacing={2} columns={16}>
@@ -47,8 +42,10 @@ function Login() {
                             title="green iguana"
                         />
                     </div>
+
                 </Grid>
                 <Grid item xs={6} md={8}>
+
                 <div style={{color: 'red'}}>{!Array.isArray(err) ? err :''}</div>
 
                     <div className={`${classes.formlg}`}>
@@ -71,7 +68,7 @@ function Login() {
                         <div className={`${classes.listtextfieldpass}`}>
                             <div className={`${classes.eyeposition}`}>
                                 <span className={`${classes.eyeclose}`} id='eyeClose' onClick={handleShowPassword}><i class="fa-regular fa-eye-slash fa-flip-horizontal"></i></span>
-                                <span className={`${classes.eyeopen}`} id='eyeOpen' onClick={handleClosePassword}><i class="fa-regular fa-eye fa-flip-horizontal"></i></span>
+                                <span className={`${classes.eyeopen}`} id='eyeOpen'><i class="fa-regular fa-eye fa-flip-horizontal"></i></span>
                             </div>
                             <input className={`${classes.textfieldlg}`} onChange={(e) => setData({ ...data, password: e.target.value })} type="password" id="password" placeholder='Password'/>
                             <div>{err ? (err[1]?.password || err[0]?.password) :''}</div>
@@ -88,13 +85,22 @@ function Login() {
                                 <Button onClick={handleLogin} className={`${classes.buttonlogin}`} variant="contained">
                                     Trang chủ
                                 </Button>
+                            </div>
+
+                            {/* <div className={`${Styles.listtextfieldpass}`}>
+                                <Link to='/forgotpass'>
+                                    <Button className={`${Styles.forgotpass}`} >Quên mật khẩu</Button>
+                                </Link>
+                            </div> */}
+
+                            {/* /Submit */}
                         </div>
                         <div className={`${classes.listtextfieldpass}`}>
                             <Link className={`${classes.forgotpass}`} to={'/forgotPass'}>Quên mật khẩu</Link>
                         </div>
                        
                         {/* /Submit */}
-                    </div>
+                    
                     <div className={`${classes.register}`}>
                         Bạn chưa có tài khoản? <Link to={'/register'}>&nbsp;Đăng ký</Link>
                     </div>     

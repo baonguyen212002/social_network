@@ -1,15 +1,13 @@
-.user {
-   border-radius: 100%;
-   margin: 0 50px
-}
+
 
 .profile {
    width: 100%;
    display: flex;
    justify-content: center;
    flex-direction: column;
-   padding-right: 16;
+   padding-left: 10%;
 }
+
 
 .profile_hd {
    margin: 30px 0 0;
@@ -18,55 +16,118 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   border-bottom: 1px solid #ccc
+}
+
+
+.user {
+   margin: 50px;
+   padding-left: 10%;
 }
 
 .profile_hd_detail {
-   width: 40%;
-}
-
-.profile_detail {
-   display: flex;
    width: 100%;
-   justify-content: space-between;
 }
 
 .func {
    display: flex;
    width: 100%;
-   justify-content: space-between;
+}
+.profile_follow {
+   position: relative;
+   width: 100%;
+   padding-left: 40px;
+}
+.btn_follow,.btn_messager,
+.btn_addfr {
+   position: absolute !important;
+   top: 10%;
+   color: white !important;
+   background-color: black !important;
+   opacity: 0.6;
+   border: none;
+   cursor: pointer;
+   &:hover {
+      opacity: 1;
+      background-color: black;
+      color: white;
+   }
+}
+.btn_messager {
+   left: 250px;
+}
+.btn_addfr {
+   left: 460px;
+}
+
+.profile_user {
+   position: relative;
+   width: 100%;
+   padding-left: 40px;
+}
+.btn_editfprofile {
+   position: absolute !important;
+   top: 10%;
+   color: white !important;
+   background-color: black !important;
+   opacity: 0.6;
+   border: none;
+   cursor: pointer;
+   &:hover {
+      opacity: 1;
+      background-color: black;
+      color: white;
+   }
+}
+
+.btn_moresetting {
+   position: absolute !important;
+   top: -5px;
+   left: 350px;
+
+   &:hover {
+      opacity: 1;
+      background-color: none;
+      color: black;
+   }
+}
+
+.profile_detail {
+   display: flex;
+   width: 60%;
+}
+.span_detail {
+   position: relative !important;
+   color: #000 !important;
+   opacity: 0.6;
+   font-size: 18px;
+   font-weight: 400;
+   padding: 5px 50px;
+   &:hover {
+      opacity: 1;
+   }
+}
+.span_detail_number {
+   font-size: 24px !important;
+   font-weight: bold !important;
+   padding: 0 5px 3px 0;
 }
 
 .profile_bd {
    text-align: center;
+   font-size: 24px;
+   padding-left: 5%;
 }
 
-.profile_posts {
-   position: relative;
-   margin-right: 30;
-   padding: 2px 8px;
-   cursor: pointer;
-}
-
-.profile_posts::before {
-   content: "";
-   position: absolute;
-   width: 80px;
-   height: 2;
-   background: #000;
-   top: 0px
-}
-
+.profile_posts,
 .profile_save_posts {
-   cursor: pointer;
-   position: relative;
-}
+  cursor: pointer;
+  padding: 20px;
+  opacity: 0.6;
 
-.profile_save_posts {
-   content: "";
-   position: absolute;
-   width: 80px;
-   height: 2;
-   background: #000;
-   top: -1px
+  &:hover,
+  &:focus {
+   opacity: 1;
+    border-top: 2px solid black;
+    border-top-color: rgba(0, 0, 0, 0.5);
+  }
 }

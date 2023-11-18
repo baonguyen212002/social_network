@@ -1,3 +1,4 @@
+
 import React, { useCallback, useEffect, useState } from 'react';
 import classes   from './style.module.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -74,11 +75,12 @@ function Register() {
                         </div>
                         <div className={`${classes.listtextfieldpass}`}>
                             Bạn đã có tài khoản? <Link to={'/login'}>&nbsp;Đăng nhập</Link>
-                        </div>
-                        {/* /Submit */}
+
                     </div>
+                    {/* /Submit */}
+                </div>
         </div>
     );
 }
-    
+
 export default Register;
