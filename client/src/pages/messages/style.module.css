@@ -4,7 +4,8 @@
     width: 50;
     height: 50;
     border-radius: 100%;
-    cursor: pointer
+    cursor: pointer;
+    z-index: -1;
  }
  .box_message{
     padding: 0 !important

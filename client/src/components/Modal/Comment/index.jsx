@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
+import axios from "axios";
 import styles from './style.module.css';
 import { Avatar, Card, Grid, CardMedia } from "@mui/material";
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -8,6 +9,28 @@ import SendIcon from '@mui/icons-material/Send';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 
 export default function Comment() {
+
+    const [users, setUser] = useState('');
+
+    useEffect(() => {
+        const bearerToken = localStorage.getItem('auth_token');
+        const headers = {
+            'Authorization': `Bearer ${bearerToken}`,
+            'Content-Type': 'application/json',
+        };
+
+        axios
+            .post('http://localhost:5000/users/profile', {}, { headers: headers })
+            .then((res) => {
+                const users = res.data;
+                setUser(users);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, []);
+
+
     const statusPoster = (
         <div>
             <div className={`${styles.Poster}`}>
@@ -21,11 +44,11 @@ export default function Comment() {
                             className={`${styles.avatar_poster}`}
                         />
                     </div>
-
+                    { users && (
                     <div className="col-md-6">
-                        <p className={`${styles.namePoster}`}>Messi</p>
+                        <p className={`${styles.namePoster}`}>{users[0].username}</p>
                     </div>
-
+                    )}
                     <div className="col-md-2">
                         <p className={`${styles.statusPoster}`}>Online</p>
                     </div>

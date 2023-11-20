@@ -11,7 +11,7 @@ import NotificationsPage from "../pages/notifications";
 import ProfilePage from "../pages/Profile";
 import RootPage from "../global/root";
 import SearchPage from "../pages/search";
-import UpdateProfile from "../pages/UpdateProfile/inedex";
+import UpdateProfile from "../pages/UpdateProfile/index";
 import ForgotPass from "../auth/ForgotPass";
 
 

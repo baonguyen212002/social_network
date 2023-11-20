@@ -16,12 +16,14 @@
    display: flex;
    justify-content: center;
    align-items: center;
+  
 }
 
 
 .user {
    margin: 50px;
    padding-left: 10%;
+   z-index: -1;
 }
 
 .profile_hd_detail {
@@ -94,6 +96,7 @@
 .profile_detail {
    display: flex;
    width: 60%;
+  
 }
 .span_detail {
    position: relative !important;

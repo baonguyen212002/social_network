@@ -1,6 +1,7 @@
 import { Avatar, Button, CardHeader, Grid, IconButton, Typography, CardActions, Input, InputAdornment } from '@mui/material';
 import React, { useCallback, useEffect, useState } from 'react';
 import classess from './style.module.css'
+import axios from 'axios';
 import { MoodRounded } from '@mui/icons-material';
 import * as actions from '../../redux/actions/message';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,6 +17,26 @@ import  io  from 'socket.io-client';
 const URL =  'http://localhost:5001/';
 const socket = io.connect(URL)
 function MessagesPage() {
+  const [users, setUser] = useState('');
+
+    useEffect(() => {
+        const bearerToken = localStorage.getItem('auth_token');
+        const headers = {
+            'Authorization': `Bearer ${bearerToken}`,
+            'Content-Type': 'application/json',
+        };
+
+        axios
+            .post('http://localhost:5000/users/profile', {}, { headers: headers })
+            .then((res) => {
+                const users = res.data;
+                setUser(users);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, []);
+
   const param = useParams();
 
     const dispatch = useDispatch();
@@ -31,6 +52,7 @@ function MessagesPage() {
       dispatch(actions.createMessage.createMessageSuccess(data))
     });
   },[dispatch])
+
   const handleSubmit = useCallback(() => {
     const data = {
       room: localStorage.getItem('room'),
@@ -41,11 +63,12 @@ function MessagesPage() {
       type: type,
       msg: localStorage.getItem('auth_user')
     }
+    // console.log(data);
     socket.emit('send', data)
     dispatch(actions.createMessage.createMessageSuccess(data))
     setContent('')
 
-  }, [content, dispatch,type])
+  }, [content, dispatch,type, chooseUser])
   const onEmojiClick = (event, emojiObject) => {
     setContent((prevInput) => prevInput + event.emoji);
     setShowPicker(false);
@@ -109,10 +132,12 @@ function MessagesPage() {
         />
       </Grid>
       <Grid item sx={{ borderRight: 1, borderLeft: 1 }} className={`${classess.box_message}`} xs={5}>
+        {users && (
         <CardHeader className={`${classess.user_message}`}
           avatar={<Avatar className={`${classess.user}`}><img src='https://images.unsplash.com/photo-1575936123452-b67c3203c357?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D' /></Avatar>}
-          title="Linh"
+          title={users[0].username}
         />
+        )}
         <div className={`${classess.main_user}`}>
           <Avatar className={`${classess.main_user_avt}`}><img src='https://images.unsplash.com/photo-1575936123452-b67c3203c357?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D' /></Avatar>
           <h4>Linh</h4>
@@ -147,7 +172,9 @@ function MessagesPage() {
       </Grid>
       
       <Grid item xs={2.8} sx={{ p: 2 }} height={'100%'} borderLeft={'1px soild #000'}>
-        <h3 className='py-4'>Linh</h3>
+        {users && (
+          <h3 className='py-4'>{users[0].username}</h3>
+        )}
         <h4>Tin nhắn</h4>
 
         {messages.users.users && messages.users.users.map((e, i)=>{

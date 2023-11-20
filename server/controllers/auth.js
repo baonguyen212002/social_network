@@ -2,6 +2,7 @@ import { UserModel } from "../models/UserModel.js";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken'
 import validate from 'validator'
+import { BioModel } from "../models/BioModel.js";
 export const login = async (req, res)=>{
 
     try {
@@ -81,7 +82,7 @@ export const register = async (req, res) => {
         email,
         password,
       });
-  
+
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, async (err, hash) => {
           if (err) throw err;
@@ -92,7 +93,14 @@ export const register = async (req, res) => {
           try {
             const savedUser = await newUser.save();
             const payload = { id: savedUser._id, username: savedUser.username };
-      
+
+            
+            const newBios = new BioModel ({
+              user_id: savedUser._id,
+              username: savedUser.username,
+            });
+            await newBios.save();
+            
                   jwt.sign(payload, 'abc-xyz', { expiresIn: 3600 }, (err, token) => {
                     if (err) throw err;
       
