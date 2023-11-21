@@ -3,8 +3,6 @@ import ModalCreate from "../../components/Modal/Modal_Create";
 import {
   IconCreate,
   IconCreateActive,
-  IconExplore,
-  IconExploreActive,
   IconHome,
   IconHomeActive,
   IconMenu,

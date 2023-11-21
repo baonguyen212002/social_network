@@ -12,9 +12,7 @@ function ListUser({users}) {
                            style={{width: '300px'}}
                            title={user.username}
                            />
-
                 )
-                
             })}
         </div>
     );
